@@ -432,19 +432,7 @@
 <p>　　简单地说，词法作用域就是定义在词法阶段的作用域，是由写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变</p>
 <p><strong>关系</strong></p>
 <p>　　无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定</p>
-<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="file:///C:\Users\student\AppData\Local\Temp\msohtmlclip1\01\clip_image001.gif" alt="说明: 复制代码"></a>;)</p>
-<p>function foo(a) {</p>
-<p>​    var b = a * 2;</p>
-<pre><code>function bar(c) {
-
-    console.log( a, b, c );
-
-}
-
-bar(b * 3);
-</code></pre><p>}</p>
-<p>foo( 2 ); // 2 4 12</p>
-<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="file:///C:\Users\student\AppData\Local\Temp\msohtmlclip1\01\clip_image001.gif" alt="说明: 复制代码"></a>;)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function foo(a) &#123;</span><br><span class="line"></span><br><span class="line">    var b = a * 2;</span><br><span class="line"></span><br><span class="line">    function bar(c) &#123;</span><br><span class="line"></span><br><span class="line">        console.log( a, b, c );</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bar(b * 3);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo( 2 ); // 2 4 12</span><br></pre></td></tr></table></figure>
 <p>　　在这个例子中有三个逐级嵌套的作用域。为了帮助理解，可以将它们想象成几个逐级包含的气泡</p>
 <p><img src="https://images2015.cnblogs.com/blog/740839/201607/740839-20160724090203841-325842459.png"></p>
 <p>　　作用域气泡由其对应的作用域块代码写在哪里决定，它们是逐级包含的</p>
