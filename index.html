@@ -434,7 +434,7 @@
 <p>　　无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function foo(a) &#123;</span><br><span class="line"></span><br><span class="line">    var b = a * 2;</span><br><span class="line"></span><br><span class="line">    function bar(c) &#123;</span><br><span class="line"></span><br><span class="line">        console.log( a, b, c );</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bar(b * 3);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo( 2 ); // 2 4 12</span><br></pre></td></tr></table></figure>
 <p>　　在这个例子中有三个逐级嵌套的作用域。为了帮助理解，可以将它们想象成几个逐级包含的气泡</p>
-<p><img src="https://images2015.cnblogs.com/blog/740839/201607/740839-20160724090203841-325842459.png"></p>
+<p><img src="https://i.loli.net/2019/04/17/5cb6b8e6e0bc7.png"></p>
 <p>　　作用域气泡由其对应的作用域块代码写在哪里决定，它们是逐级包含的</p>
 <p>　　气泡1包含着整个全局作用域，其中只有一个标识符：foo</p>
 <p>　　气泡2包含着foo所创建的作用域，其中有三个标识符：a、bar和b</p>
@@ -479,9 +479,9 @@ console.log(window.a);//0
 <h1 id="作用域链的组成"><a href="#作用域链的组成" class="headerlink" title="作用域链的组成"></a>作用域链的组成</h1><p>   在JS中，函数的可以允许嵌套的。即，在一个函数的内部声明另一个函数</p>
 <pre><code>类似这样： 
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function A()&#123;</span><br><span class="line">  var  a=1;</span><br><span class="line">   function B()&#123;  //在A函数内部，声明了函数B，这就是所谓的函数嵌套。</span><br><span class="line">         var b=2;   </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   对于A来说，A函数在执行的时候，会创建其A函数的作用域， 那么函数B在创建的时候，会引用A的作用域，类似下面这样</p>
-<p>  <img src="file:///C:\Users\student\AppData\Local\Temp\msohtmlclip1\01\clip_image005.png" alt="说明: https://images0.cnblogs.com/blog2015/697856/201504/071952581338727.png"></p>
+<p>   对于A来说，A函数在执行的时候，会创建其A函数的作用域， 那么函数B在创建的时候，会引用A的作用域，类</p>
 <p>函数B在执行的时候，其作用域类似于下面这样：</p>
+<p><img src="https://images0.cnblogs.com/blog2015/697856/201504/071952581338727.png"></p>
 <p><img src="file:///C:\Users\student\AppData\Local\Temp\msohtmlclip1\01\clip_image007.png" alt="说明: https://images0.cnblogs.com/blog2015/697856/201504/071955114772258.png"></p>
 <pre><code>从上面的两幅图中可以看出，函数B在执行的时候，是会引用函数A的作用域的。所以，像这种函数作用域的嵌套就组成了所谓的函数作用域链。当在自身作用域内找不到该变量的时候，会沿着作用域链逐步向上查找，若在全局作用域内部仍找不到该变量，则会抛出异常。
 </code></pre><h1 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h1><p><strong>JavaScript**</strong>解析机制是什么？</p>
